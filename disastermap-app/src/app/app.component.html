@@ -2,6 +2,13 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<agm-map>
+    <agm-overlay
+      *ngFor      = "let item of latLonArray"
+      [latitude]  = "item.lat"
+      [longitude] = "item.lon"
+    >
+      <!-- blue html square -->
+      <div style="width:15px;height:15px; border-radius: 5em;background-color:blue;"></div>
+    </agm-overlay>
+  </agm-map>
