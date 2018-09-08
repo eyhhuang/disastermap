@@ -1,18 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-var app = express();
-var bodyParser = require('body-parser');
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+
+const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.get('/', (req,res)=>{
+app.get('/', (req, res)=>{
     //do stuff
     res.status(200).json('success');
 });
 
-app.get('/ping', cors(),  (req,res)=>{
+app.get('/ping', cors(),  (req, res)=>{
     res.status(200).json('api working');
 })
+
 const port = process.env.PORT || 4099;
-console.log('listening on port: '+port);
+console.log(`listening on port: ${port}`);
 app.listen(port);
