@@ -33,6 +33,7 @@ app.get('/news', cors(), (req, res)=>{
                 //console.log(body.articles);
                 let newsWithCountryCode = body.articles.map(function(article) {
                     article.countryCode = countryMap[country];
+                    article.country = country;
                     return article;
                 });
                 news = news.concat(newsWithCountryCode);
