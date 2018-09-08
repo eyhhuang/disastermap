@@ -2,13 +2,19 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
+<!-- <div *ngFor="let item of longLat | keyvalue" >
+        Object Key:{{item.key}} and Object Value:{{item.value}}
+
+</div> -->
+
+<!-- <div *ngFor="let item of Object.keys(longLat)">
+    {{longLat[item]}}
+</div> -->
+<!-- <p *ngFor="let item of latLonArray">{{item[1]}}  {{item[0]}}</p> -->
+
 <agm-map>
-    <agm-overlay
-      *ngFor      = "let item of latLonArray"
-      [latitude]  = "item.lat"
-      [longitude] = "item.lon"
-    >
-      <!-- blue html square -->
-      <div style="width:15px;height:15px; border-radius: 5em;background-color:blue;"></div>
+
+    <agm-overlay *ngFor="let item of longLat | keyvalue" [latitude]  = "item.value[0]"[longitude] = "item.value[1]">
+      <div style="width:10px;height:10px; border-radius: 5em;background-color:blue;"></div>
     </agm-overlay>
   </agm-map>
