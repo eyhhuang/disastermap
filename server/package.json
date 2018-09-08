@@ -5,14 +5,16 @@
   "main": "bable-node app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --exec babel-node --presets es2015,stage-2"
-    },
+    "start": "nodemon app.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
