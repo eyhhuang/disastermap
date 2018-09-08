@@ -20,12 +20,21 @@ app.get('/countryMap', cors(), (req, res)=>{
     res.status(200).json(countryMap);
 })
 
-app.get('/news', cors(), (req, res)=>{
+app.get('/news/:q?/:category?', cors(), (req, res)=>{
     let news = [];
+    let url = 'https://newsapi.org/v2/top-headlines?' +
+              'apiKey=ef5f067cc3c44a88a400581d8fbbd26f';
+
+    if (req.query.q) {
+        url += '&q=' + req.query.q;
+    }
+    if (req.query.category) {
+        url += '&category=' + req.query.category;
+    }
+
     async.each(Object.keys(countryMap), function(country, cb) {
-        request('https://newsapi.org/v2/top-headlines?country=' +
-                countryMap[country] +
-                '&apiKey=c4671bd21d74439b92325d84c118e72e', function(err, res2, body) {
+        request(url + '&country=' + countryMap[country]
+            , function(err, res2, body) {
             if (err || res2.statusCode !== 200) {
                 cb(err || res2);
             } else {
@@ -48,8 +57,6 @@ app.get('/news', cors(), (req, res)=>{
         }
     });
 })
-
-
 
 const port = process.env.PORT || 4099;
 console.log(`listening on port: ${port}`);
