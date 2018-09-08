@@ -9,7 +9,7 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   getCountries() {
-    return [{ lat: 56.1304, lon: -106.3468 }];
+    return this.http.get(this.mapapi+'/countries');
   }
 
   test() {
