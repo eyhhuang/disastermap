@@ -15,12 +15,15 @@ export class AppComponent implements OnInit {
   public selectedCountry: string = "";
   public ngOnInit(): void {
     this.getCountries();
+    console.log('HERE');
     console.log(this.codes);
   }
 
   getCountries(){
+
     this.mapService.getCountries().subscribe(data=>{
       this.codes = data;
+      console.log('')
     })
   }
   click(name: string) {

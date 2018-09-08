@@ -9,7 +9,7 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   getCountries() {
-    return this.http.get(this.mapapi+'/countries');
+    return this.http.get(this.mapapi+'/countryMap');
   }
 
   test() {
