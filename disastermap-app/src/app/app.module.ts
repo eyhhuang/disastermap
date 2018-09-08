@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
-import { AgmOverlays } from "agm-overlays";
+import { AgmOverlays } from 'agm-overlays';
 
 
 @NgModule({
