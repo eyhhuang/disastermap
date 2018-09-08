@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private mapService: MapService) { }
   longLat = longLat;
   public codes : object = {};
+  public selectedCountry: string = "";
   public ngOnInit(): void {
     this.getCountries();
     console.log(this.codes);
@@ -23,7 +24,9 @@ export class AppComponent implements OnInit {
     })
   }
   click(name: string) {
-    console.log(name);
+    
+    this.selectedCountry = name;
+    console.log(this.selectedCountry)
     // this.mapService.getData(name).subscribe(data => {
     //   console.log(data);
     // });
