@@ -1,9 +1,13 @@
 <h1>Disaster Map</h1>
 <button (click)="test()">test</button>
-<agm-map>
-  <agm-overlay *ngFor="let item of longLat | keyvalue" [latitude]="item.value[0]" [longitude]="item.value[1]">
-    <div style="border-style: solid; " (click)="click(item.key)">
+<agm-map >
+  <agm-overlay *ngFor="let item of codes | keyvalue" [latitude]="longLat[item.value][0]" [longitude]="longLat[item.value][1]"(click)="click(item.key)">
+    <div style=" height: 20px; width: 20px" (click)="click(item.key)">
+    <img src="../assets/red.png" style="height:20px; margin: 10px 0px 0px 10px">
+  </div>
+    <!-- <div style="position: relative; border-style: solid; position: relative; z-index: 100;" (click)="click(item.key)">
       <span class="dot"></span>
-    </div>
+    </div> -->
   </agm-overlay>
 </agm-map>
+<p>Powered By News API</p>
