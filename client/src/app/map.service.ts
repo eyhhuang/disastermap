@@ -12,10 +12,10 @@ export class MapService {
     return [{ lat: 56.1304, lon: -106.3468 }];
   }
 
-  test(){
-    return this.http.get(this.mapapi+'/ping');
+  test() {
+    return this.http.get(this.mapapi + '/ping');
   }
-  getData(name:string){
-    return this.http.get(this.mapapi+'/endpoint/{name}', {observe: 'response'});
+  getData(name: string) {
+    return this.http.get(this.mapapi + '/endpoint/{name}', { observe: 'response' });
   }
 }
