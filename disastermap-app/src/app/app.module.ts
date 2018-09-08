@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { AgmOverlays } from 'agm-overlays';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +12,7 @@ import { AgmOverlays } from 'agm-overlays';
   ],
   imports: [
     BrowserModule,
-    AgmOverlays,
+    AgmOverlays, HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDjLrZaifz5VwkGtWLCu296LkxC8vIX2kY'
     })

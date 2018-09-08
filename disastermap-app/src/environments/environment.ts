@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: "asdf"
+  api: "http://localhost:4099"
 };
 /*
  * In development mode, to ignore zone related error stack frames such as

@@ -1,6 +1,9 @@
 <h1>Disaster Map</h1>
+<button (click)="test()">test</button>
 <agm-map>
   <agm-overlay *ngFor="let item of longLat | keyvalue" [latitude]="item.value[0]" [longitude]="item.value[1]">
-    <div style="width:10px;height:10px; border-radius: 5em;background-color:blue;"></div>
+        <div style="border-style: solid; "(click)="click(item.key)">
+                <span class="dot"></span>
+        </div>
   </agm-overlay>
 </agm-map>
