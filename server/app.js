@@ -49,6 +49,8 @@ app.get('/news', cors(), (req, res)=>{
     });
 })
 
+
+
 const port = process.env.PORT || 4099;
 console.log(`listening on port: ${port}`);
 app.listen(port);

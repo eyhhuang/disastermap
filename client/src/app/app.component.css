@@ -11,3 +11,20 @@ agm-map {
   position: relative;
   z-index: -1;
 }
+.news{
+  width:100%;
+  display: inline-block;
+  vertical-align: top;
+  /* border-style:solid; */
+  margin-top:-150%;
+  border-style:solid;
+  top:0px;
+}
+.nonews{
+  width:100%;
+  display: inline-block;
+  vertical-align: top;
+  /* border-style:solid; */
+  margin-top:-100%;
+  text-align: center;
+}
