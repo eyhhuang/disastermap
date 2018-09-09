@@ -11,10 +11,13 @@ import { longLat } from '../assets/longitude-latitude';
 export class AppComponent implements OnInit {
   constructor(private mapService: MapService) { }
   longLat = longLat;
+  public data : object = [];
   public codes : object = {};
   public selectedCountry: string = "";
   public ngOnInit(): void {
     this.getCountries();
+    this.data = this.mapService.getData();
+    console.log(this.data);
     console.log('HERE');
     console.log(this.codes);
   }
@@ -27,7 +30,7 @@ export class AppComponent implements OnInit {
     })
   }
   click(name: string) {
-    
+
     this.selectedCountry = name;
     console.log(this.selectedCountry)
     // this.mapService.getData(name).subscribe(data => {

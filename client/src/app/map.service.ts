@@ -15,7 +15,8 @@ export class MapService {
   test() {
     return this.http.get(this.mapapi + '/ping');
   }
-  getData(name: string) {
-    return this.http.get(this.mapapi + '/endpoint/{name}', { observe: 'response' });
+
+  getData() {
+    return this.http.get(this.mapapi + '/news', { observe: 'response' });
   }
 }
