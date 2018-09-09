@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 import { MapService } from './map.service';
 import { longLat } from '../assets/longitude-latitude';
@@ -66,11 +67,10 @@ export class AppComponent implements OnInit {
   }
 
   search(){
-    if(this.category!==undefined){
     this.mapService.getNews({category: this.category, keyword: this.keyword}).subscribe((news)=>{
       this.allNews = news;
       this.selectedCountry = '';
-    })}
+    })
   }
 
   getCategory(category: any){

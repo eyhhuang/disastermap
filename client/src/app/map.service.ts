@@ -29,8 +29,10 @@ export class MapService {
     let keyword = params.keyword;
 
     let url = `${this.mapapi}/news`;
-    if (category === undefined) category = 'all';
-    
+    console.log(category);
+    console.log(keyword);
+    if (category === '') category = 'all';
+
     if (category !== 'all' && keyword) {
       url += `?q={keyword}&category={category}`;
     } else if (category !== 'all') {
@@ -38,6 +40,7 @@ export class MapService {
     } else if (keyword) {
       url += `?q=${keyword}`;
     }
+    console.log(url);
 
     return this.http.get(url);
   }

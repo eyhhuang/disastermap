@@ -1,3 +1,7 @@
+* {
+    font-family: "lato", sans-serif;
+}
+
 agm-map {
     height: 402px;
     vertical-align: top;
@@ -21,13 +25,14 @@ a {
 }
 
 .news{
-  width:100%;
+  width:90%;
   display: inline-block;
-  /* border-style:solid; */
-  margin-top: 1px;
+  border: 1px dashed black;
+  margin: 1px 15px;
   min-height: 400px;
   max-height: 400px;
   overflow-y: auto;
+  overflow-x: none;
   vertical-align: top;
 }
 
@@ -41,10 +46,11 @@ a {
     border-style: solid;
 }
 .nonews{
-  width:100%;
+  width:90%;
   display: inline-block;
-  /* border-style:solid; */
+  border: 1px dashed black;
   min-height: 400px;
+  margin: 1px 15px;
   text-align: center;
 }
 
@@ -62,7 +68,8 @@ a {
 .filter-container {
     text-align: center;
     width: 100%;
-    border: 1px solid black;
-    margin: 4px 0;
+    border: solid black;
+    border-width: 1px 0 0 0;
+    margin: 15px 0;
     padding: 12px 0;
 }

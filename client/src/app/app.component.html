@@ -3,8 +3,8 @@
 </div>
 
 <div style="display: block;height: 90%;">
-    <div style="display: block;height: 90%; border: 1px solid black;">
-    <div style="display:inline-block; width:50%; height:100%; margin: auto;">
+    <div style="display: block;height: 90%;">
+    <div style="display:inline-block; width:40%; height:100%; margin: auto;">
         <div *ngIf="selectedCountry==''" class="nonews">
             <h1>Click on a country to see its top news stories</h1>
         </div>
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div style="display: inline-block; width: 50%; height: 100%; vertical-align: top;">
+    <div style="display: inline-block; width: 60%; height: 100%; vertical-align: top;">
     <agm-map [zoom]="2">
         <agm-circle [radius] = "100000" *ngFor="let item of codes | keyvalue" [latitude]="longLat[item.value][0]" [longitude]="longLat[item.value][1]" [fillColor]="'red'" [fillOpacity]="0.9" (circleClick)="click(item.key)"></agm-circle>
     </agm-map>

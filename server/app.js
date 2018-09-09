@@ -30,7 +30,7 @@ app.get('/countryMap', cors(), (req, res)=>{
 app.get('/news/:q?/:category?', cors(), (req, res)=>{
     let news = [];
     let url = 'https://newsapi.org/v2/top-headlines?' +
-              'apiKey=cdb2db9f0a5a4690a2eb39661b2826ed';
+              'apiKey=68990cb8e4f4474ab012c04cdd311159';
 
     if (req.query.q) {
         url += '&q=' + req.query.q;
