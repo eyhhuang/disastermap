@@ -11,33 +11,41 @@ import { longLat } from '../assets/longitude-latitude';
 export class AppComponent implements OnInit {
   constructor(private mapService: MapService) { }
   longLat = longLat;
-  public allNews : object = [];
-  public selectedNews: object = [];
-  public codes : object = {};
+  public allNews : any = [];
+  public selectedNews: any = [];
+  public codes : Object = {};
   public selectedCountry: string = "";
   public ngOnInit(): void {
     this.getCountries();
     this.getNews();
-    console.log(this.allNews);
-    console.log('HERE');
-    console.log(this.codes);
   }
 
   getCountries(){
-      this.mapService.getCountries().subscribe(data=>this.codes = data);
+      this.mapService.getCountries().subscribe((data)=> {
+        this.codes = data;
+        console.log(this.codes);
+      });
+
   }
 
   getNews() {
-      this.mapService.getNews().subscribe(news=>this.allNews = news);
+      this.mapService.getNews().subscribe((news)=>{
+        this.allNews = news;
+        console.log(this.allNews);
+      });
   }
 
   click(name: string) {
 
     this.selectedCountry = name;
-    console.log(this.selectedCountry)
+    console.log(this.selectedCountry);
+    this.selectedNews = this.allNews.filter((news:any)=>news.country===this.selectedCountry);
+    console.log(this.selectedNews);
     // this.mapService.getData(name).subscribe(data => {
     //   console.log(data);
     // });
+    
+
   }
 
   test() {

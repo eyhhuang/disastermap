@@ -1,5 +1,5 @@
 <h1>Disaster Map</h1>
-<button (click)="test()">test</button>
+<button (click)="getNews()">hnnnng</button>
 <div style="display: block;height: 90%;" >
 <div style="display:inline-block; width:30%; height:100%;" >
     <div *ngIf="selectedCountry==''" class="nonews">
@@ -8,13 +8,10 @@
 
     <div *ngIf="selectedCountry!=''" class="news">
         <h2>{{selectedCountry}}</h2>
-        <h3>description description descriptiondescriptiondescription descriptiondescription description description description</h3>
-        <p>links?>></p>
-        <p>links?>></p>
-
-        <p>links?>></p>
-
-        <p>links?>></p>
+        <div *ngFor="let item of selectedNews">
+             <a  href="{{item.url}}"><h4>{{item.title}}</h4></a>
+            <p>{{item.description}}</p>
+        </div>
     </div>
 </div>
 
