@@ -30,7 +30,7 @@ app.get('/countryMap', cors(), (req, res)=>{
 app.get('/news/:q?/:category?', cors(), (req, res)=>{
     let news = [];
     let url = 'https://newsapi.org/v2/top-headlines?' +
-              'apiKey=f9ad0b17e0cd4cfa8f8fa16844e875e3';
+              'apiKey=66209d475ee745338ad7a575033c96b4';
 
     if (req.query.q) {
         url += '&q=' + req.query.q;
@@ -60,8 +60,8 @@ app.get('/news/:q?/:category?', cors(), (req, res)=>{
         if (err) {
             res.status(500).json(err);
         } else {
-            
-            
+
+
 
             res.status(200).json(news);
         }
