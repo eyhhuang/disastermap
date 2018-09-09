@@ -1,5 +1,12 @@
 <h1>Disaster Map</h1>
-<button (click)="getNews()">hnnnng</button>
+
+<div style="display:inline-block">
+        <h4>Keyword: </h4>
+    </div>
+        <input style="display:inline-block"  type="text" ng-model="keyword"label="Keyword">
+<app-input-radio-set [props]="categoryFilterSet" (categoryChooser)="getCategory($event)"></app-input-radio-set>
+<button (click)="search()">Search</button>
+
 <div style="display: block;height: 90%;" >
 <div style="display:inline-block; width:30%; height:100%;" >
     <div *ngIf="selectedCountry==''" class="nonews">
