@@ -1,5 +1,7 @@
 <h1>Disaster Map</h1>
 <button (click)="getNews()">hnnnng</button>
+<app-input-text [placeholder]="'keyword filter'"></app-input-text>
+<app-input-radio-set [props]="categoryFilterSet"></app-input-radio-set>
 <div style="display: block;height: 90%;" >
 <div style="display:inline-block; width:30%; height:100%;" >
     <div *ngIf="selectedCountry==''" class="nonews">

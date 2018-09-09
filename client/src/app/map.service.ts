@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs'
+
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,17 +11,21 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   getCountries() {
-    return this.http.get(this.mapapi + '/countryMap');
+    return this.http.get(`${this.mapapi}/countryMap`);
   }
 
   test() {
-    return this.http.get(this.mapapi + '/ping');
+    return this.http.get(`${this.mapapi}/ping`);
+  }
+  getData(name: string) {
+    return this.http.get(
+      `${this.mapapi}/endpoint/${name}`,
+      { observe: 'response' },
+    );
   }
 
   getNews() {
-    console.log(this.mapapi + '/news');
-    
-    return this.http.get(this.mapapi + '/news');
-
+    console.log(`${this.mapapi}/news`);
+    return this.http.get(`${this.mapapi}/news`);
   }
 }

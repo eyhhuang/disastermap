@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MapService } from './map.service';
 import { longLat } from '../assets/longitude-latitude';
+import { InputRadioProps } from 'src/app/components/input/radio-set';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,55 @@ import { longLat } from '../assets/longitude-latitude';
 export class AppComponent implements OnInit {
   constructor(private mapService: MapService) { }
   longLat = longLat;
-  public allNews : any = [];
+  public allNews: any = [];
   public selectedNews: any = [];
-  public codes : Object = {};
-  public selectedCountry: string = "";
+  public codes: Object = {};
+  public selectedCountry: string = '';
+  public categoryFilterSet: InputRadioProps = {
+    initialValue: '',
+    inputSet: [
+      {
+        label: 'all',
+        value: '',
+      },
+      {
+        label: 'business',
+        value: 'business',
+      },
+      {
+        label: 'entertainment',
+        value: 'entertainment',
+      },
+      {
+        label: 'general',
+        value: 'general',
+      },
+      {
+        label: 'health',
+        value: 'health',
+      },
+      {
+        label: 'science',
+        value: 'science',
+      },
+      {
+        label: 'sports',
+        value: 'sports',
+      },
+      {
+        label: 'technology',
+        value: 'technology',
+      }
+    ]
+  };
+
   public ngOnInit(): void {
     this.getCountries();
     this.getNews();
   }
 
-  getCountries(){
-      this.mapService.getCountries().subscribe((data)=> {
+  getCountries() {
+      this.mapService.getCountries().subscribe((data) => {
         this.codes = data;
         console.log(this.codes);
       });
@@ -29,7 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   getNews() {
-      this.mapService.getNews().subscribe((news)=>{
+      this.mapService.getNews().subscribe((news) => {
         this.allNews = news;
         console.log(this.allNews);
       });
@@ -39,13 +78,10 @@ export class AppComponent implements OnInit {
 
     this.selectedCountry = name;
     console.log(this.selectedCountry);
-    this.selectedNews = this.allNews.filter((news:any)=>news.country===this.selectedCountry);
+    this.selectedNews = this.allNews.filter((news: any) =>
+      news.country === this.selectedCountry,
+    );
     console.log(this.selectedNews);
-    // this.mapService.getData(name).subscribe(data => {
-    //   console.log(data);
-    // });
-    
-
   }
 
   test() {
