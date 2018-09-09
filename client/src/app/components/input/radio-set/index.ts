@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export interface InputRadioProps {
     inputSet: Array<{
@@ -22,7 +22,7 @@ export interface InputRadioProps {
             />
             {{ item.label }}
         </label>
-        <p>{{ value }}</p>`
+        `
 })
 export class InputRadioSetComponent implements OnInit {
     private value = '';
@@ -30,9 +30,11 @@ export class InputRadioSetComponent implements OnInit {
         initialValue: '',
         inputSet: [],
     };
-
+    @Output() categoryChooser: EventEmitter<any> = new EventEmitter<any>();
     public update(newValue: string) {
         this.value = newValue;
+        this.categoryChooser.emit(this.value);
+        // console.log(this.value);
     }
     public ngOnInit(): void {
         this.value = this.props.initialValue;

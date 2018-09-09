@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
 import { MapService } from './map.service';
 import { longLat } from '../assets/longitude-latitude';
-import { InputRadioProps } from 'src/app/components/input/radio-set';
+import { InputRadioProps, InputRadioSetComponent } from 'src/app/components/input/radio-set';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +10,24 @@ import { InputRadioProps } from 'src/app/components/input/radio-set';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+
   constructor(private mapService: MapService) { }
+  // @ViewChild(InputRadioSetComponent) child: any;
+
   longLat = longLat;
   public allNews: any = [];
   public selectedNews: any = [];
   public codes: Object = {};
   public selectedCountry: string = '';
+  public keyword : string = "";
+  public category:string="";
   public categoryFilterSet: InputRadioProps = {
     initialValue: '',
     inputSet: [
       {
         label: 'all',
-        value: '',
+        value: 'all',
       },
       {
         label: 'business',
@@ -59,6 +65,18 @@ export class AppComponent implements OnInit {
     this.getNews();
   }
 
+  search(){
+    if(this.category!==undefined){
+    this.mapService.getNews({category: this.category, keyword: this.keyword}).subscribe((news)=>{
+      this.allNews = news;
+      this.selectedCountry = '';
+    })}
+  }
+
+  getCategory(category: any){
+    this.category = category;
+    console.log(this.category);
+  }
   getCountries() {
       this.mapService.getCountries().subscribe((data) => {
         this.codes = data;
@@ -68,12 +86,16 @@ export class AppComponent implements OnInit {
   }
 
   getNews() {
-      this.mapService.getNews().subscribe((news) => {
+      this.mapService.getNews({}).subscribe((news) => {
         this.allNews = news;
         console.log(this.allNews);
       });
   }
 
+  // ngAfterViewInit() {
+  //   this.category = this.child.value;
+  //   console.log('HASLDFKASDLKFALSDKFJALSDKFJALSDKF' +this.category);
+  // }
   click(name: string) {
 
     this.selectedCountry = name;

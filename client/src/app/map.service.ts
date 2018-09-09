@@ -24,8 +24,22 @@ export class MapService {
     );
   }
 
-  getNews() {
-    console.log(`${this.mapapi}/news`);
-    return this.http.get(`${this.mapapi}/news`);
+  getNews(params: any) {
+    let category = params.category;
+    let keyword = params.keyword;
+
+    let url = `${this.mapapi}/news`;
+    if (category === undefined) category = 'all';
+    
+    if (category !== 'all' && keyword) {
+      url += `?q={keyword}&category={category}`;
+    } else if (category !== 'all') {
+      url += `?category=${category}`;
+    } else if (keyword) {
+      url += `?q=${keyword}`;
+    }
+
+    return this.http.get(url);
   }
+
 }
