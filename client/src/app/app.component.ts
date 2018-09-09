@@ -10,19 +10,42 @@ import { longLat } from '../assets/longitude-latitude';
 })
 export class AppComponent implements OnInit {
   constructor(private mapService: MapService) { }
-  public title: string = 'My first AGM project';
-  public lat: number = 51.678418;
-  public lng: number = 7.809007;
-  public longLat = longLat;
+  longLat = longLat;
+  public allNews : any = [];
+  public selectedNews: any = [];
+  public codes : Object = {};
+  public selectedCountry: string = "";
   public ngOnInit(): void {
-    console.log(this.longLat);
+    this.getCountries();
+    this.getNews();
+  }
+
+  getCountries(){
+      this.mapService.getCountries().subscribe((data)=> {
+        this.codes = data;
+        console.log(this.codes);
+      });
+
+  }
+
+  getNews() {
+      this.mapService.getNews().subscribe((news)=>{
+        this.allNews = news;
+        console.log(this.allNews);
+      });
   }
 
   click(name: string) {
-    console.log(name);
-    this.mapService.getData(name).subscribe(data => {
-      console.log(data);
-    });
+
+    this.selectedCountry = name;
+    console.log(this.selectedCountry);
+    this.selectedNews = this.allNews.filter((news:any)=>news.country===this.selectedCountry);
+    console.log(this.selectedNews);
+    // this.mapService.getData(name).subscribe(data => {
+    //   console.log(data);
+    // });
+    
+
   }
 
   test() {
