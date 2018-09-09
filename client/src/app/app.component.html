@@ -2,25 +2,24 @@
 <button (click)="test()">test</button>
 <div style="display: block;height: 90%;" >
 <div style="display:inline-block; width:30%; height:100%;" >
-  <div *ngIf="selectedCountry==''" class="nonews">
+    <div *ngIf="selectedCountry==''" class="nonews">
+        <h1>Click on a country to see its top news stories</h1>
+    </div>
 
-    <h1>Click on a country to see its top news stories</h1>
-  </div>
-  <div *ngIf="selectedCountry!=''" class="news">
+    <div *ngIf="selectedCountry!=''" class="news">
+        <h2>{{selectedCountry}}</h2>
+        <h3>description description descriptiondescriptiondescription descriptiondescription description description description</h3>
+        <p>links?>></p>
+        <p>links?>></p>
 
-<h2>{{selectedCountry}}</h2>
-<h3>description description descriptiondescriptiondescription descriptiondescription description description description</h3>
-<p>links?>></p>
-<p>links?>></p>
+        <p>links?>></p>
 
-<p>links?>></p>
-
-<p>links?>></p>
-
+        <p>links?>></p>
     </div>
 </div>
+
 <div style="display: inline-block; width: 70%; height: 100%;">
-<agm-map>
+<agm-map [zoom]="2">
     <agm-circle [radius] = "100000" *ngFor="let item of codes | keyvalue" [latitude]="longLat[item.value][0]" [longitude]="longLat[item.value][1]" [fillColor]="'red'" [fillOpacity]="0.9" (circleClick)="click(item.key)"></agm-circle>
 </agm-map>
 </div>

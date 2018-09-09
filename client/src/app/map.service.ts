@@ -9,14 +9,15 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   getCountries() {
-    return this.http.get(this.mapapi+'/countryMap');
+    return this.http.get(this.mapapi + '/countryMap');
   }
 
   test() {
     return this.http.get(this.mapapi + '/ping');
   }
 
-  getData() {
-    return this.http.get(this.mapapi + '/news', { observe: 'response' });
+  getNews() {
+    console.log(this.mapapi + '/news');
+    return this.http.get(this.mapapi + '/news');
   }
 }
