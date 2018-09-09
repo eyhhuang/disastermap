@@ -1,33 +1,48 @@
-<h1>Disaster Map</h1>
+<div class="title">
+    <h1>MapMapp</h1>
+</div>
 
-<div style="display:inline-block">
-        <h4>Keyword: </h4>
+<div style="display: block;height: 90%;">
+    <div style="display: block;height: 90%; border: 1px solid black;">
+    <div style="display:inline-block; width:50%; height:100%; margin: auto;">
+        <div *ngIf="selectedCountry==''" class="nonews">
+            <h1>Click on a country to see its top news stories</h1>
+        </div>
+
+        <div *ngIf="selectedCountry!=''" class="news">
+            <h2 style="text-align: center;">{{selectedCountry}}</h2>
+            <div *ngFor="let item of selectedNews">
+                <div class="news-item">
+                    <a href="{{item.url}}"><h4 class="news-title">{{item.title}}</h4></a>
+                    <p>{{item.description}}</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div style="display: inline-block; width: 50%; height: 100%; vertical-align: top;">
+    <agm-map [zoom]="2">
+        <agm-circle [radius] = "100000" *ngFor="let item of codes | keyvalue" [latitude]="longLat[item.value][0]" [longitude]="longLat[item.value][1]" [fillColor]="'red'" [fillOpacity]="0.9" (circleClick)="click(item.key)"></agm-circle>
+    </agm-map>
+    </div>
+</div>
+
+<div style="display: block;height: 90%;">
+    <div class="filter-container">
+        <div class="filter-block">
+        <h4>Custom Search</h4>
+        <button (click)="search()">Search</button>
+        </div>
+        <div class="filter-block">
+        <h4>Keyword</h4>
         <input style="display:inline-block"  type="text" ng-model="keyword"label="Keyword">
-<app-input-radio-set [props]="categoryFilterSet" (categoryChooser)="getCategory($event)"></app-input-radio-set>
-<button (click)="search()">Search</button>
-
-<div style="display: block;height: 90%;" >
-<div style="display:inline-block; width:30%; height:100%;" >
-    <div *ngIf="selectedCountry==''" class="nonews">
-        <h1>Click on a country to see its top news stories</h1>
-    </div>
-
-    <div *ngIf="selectedCountry!=''" class="news">
-        <h2>{{selectedCountry}}</h2>
-        <div *ngFor="let item of selectedNews">
-             <a  href="{{item.url}}"><h4>{{item.title}}</h4></a>
-            <p>{{item.description}}</p>
+        </div>
+        <div class="filter-block">
+        <h4>Category</h4>
+        <app-input-radio-set [props]="categoryFilterSet" (categoryChooser)="getCategory($event)" style="vertical-align: top;"></app-input-radio-set>
         </div>
     </div>
 </div>
+</div>
 
-<div style="display: inline-block; width: 70%; height: 100%;">
-<agm-map [zoom]="2">
-    <agm-circle [radius] = "100000" *ngFor="let item of codes | keyvalue" [latitude]="longLat[item.value][0]" [longitude]="longLat[item.value][1]" [fillColor]="'red'" [fillOpacity]="0.9" (circleClick)="click(item.key)"></agm-circle>
-</agm-map>
-</div>
-</div>
-<div style="display:block;">
 <p>Powered By News API</p>
-</div>
