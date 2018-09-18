@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+// import { MatButtonModule } from '@angular/material/button';
 
+import {FormsModule, ReactiveFormsModule, FormControl} from '@angular/forms';
 import { MapService } from './map.service';
 import { longLat } from '../assets/longitude-latitude';
 import { InputRadioProps, InputRadioSetComponent } from 'src/app/components/input/radio-set';
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   public selectedNews: any = [];
   public codes: Object = {};
   public selectedCountry: string = '';
-  public keyword : string = "";
+  public keyword = new FormControl('');
   public category:string="";
   public categoryFilterSet: InputRadioProps = {
     initialValue: '',
@@ -67,7 +68,8 @@ export class AppComponent implements OnInit {
   }
 
   search(){
-    this.mapService.getNews({category: this.category, keyword: this.keyword}).subscribe((news)=>{
+    console.log(this.keyword.value);
+    this.mapService.getNews({category: this.category, keyword: this.keyword.value}).subscribe((news)=>{
       this.allNews = news;
       this.selectedCountry = '';
     })

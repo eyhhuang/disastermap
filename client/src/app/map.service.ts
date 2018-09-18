@@ -31,8 +31,7 @@ export class MapService {
     let url = `${this.mapapi}/news`;
     console.log(category);
     console.log(keyword);
-    if (category === '') category = 'all';
-
+    if (category === '' || category === undefined) category = 'all';
     if (category !== 'all' && keyword) {
       url += `?q={keyword}&category={category}`;
     } else if (category !== 'all') {

@@ -5,7 +5,9 @@ import { AgmOverlays } from 'agm-overlays';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from 'src/app/app.component';
 import { InputRadioSetComponent} from 'src/app/components/input/radio-set';
-import { MatButtonModule } from '@angular/material';
+// import { MatButtonModule } from '@angular/material';
+import {FormsModule,  ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { MatButtonModule } from '@angular/material';
     BrowserModule,
     AgmOverlays,
     HttpClientModule,
-    MatButtonModule,
+    // MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDjLrZaifz5VwkGtWLCu296LkxC8vIX2kY'
     })
   ],
   exports: [
-      MatButtonModule
+      // MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
